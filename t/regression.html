@@ -73,5 +73,36 @@
 	test( result, "102030appleibm" );
       </script>
     </li>
+    <h1>Hashes</h1>
+    <li><b>keys</b> support
+      <script>
+	var myHash = $H( { a: 10, b:20, c:30, d:"apple", e:"ibm" } );
+	test( myHash.keys().toString(), "a,b,c,d,e" );
+      </script>
+    </li>
+    <li><b>values</b> support
+      <script>
+	test( myHash.values().toString(), "10,20,30,apple,ibm" );
+      </script>
+    </li>
+    <li><b>hasKey</b> support
+      <script>
+	test( myHash.hasKey( "c" ), true );
+	test( myHash.hasKey( 1 ), false );
+      </script>
+    </li>
+    <li><b>hasValue</b> support
+      <script>
+	test( myHash.hasValue( "apple" ), true );
+	test( myHash.hasValue( 1 ), false );
+      </script>
+    </li>
+    <li>iterator support
+      <script>
+	var result = "";
+	myHash.iterate( function(key, value) { result += key + "=" + value; } );
+	test( result, "a=10b=20c=30d=applee=ibm" );
+      </script>
+    </li>
   </body>
 </html>

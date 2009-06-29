@@ -18,7 +18,8 @@ TARGETS=build/${APP}.min.js
 SRCS=src/ProtoJS.js \
      src/Class.js \
      src/Mixin.js \
-     src/Array.js
+     src/Array.js \
+     src/Hash.js
 
 VERSION=$(shell git describe --tags | cut -d'-' -f1,2)
 LIBS=

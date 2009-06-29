@@ -5,7 +5,7 @@ ProtoJS.Array = {
 
     iterate: function(handler, context) {
 	for(var i=0, length=this.length; i<length; i++ ) {
-	    handler.call(context, this[i]);
+	    handler.call(context, this[i], i);
 	}
     }
 }
