@@ -1,0 +1,20 @@
+ProtoJS
+by Christophe VG <xtof@thesoftwarefactory.be>
+Copyright 2009, TheSoftwareFactory
+
+---
+
+ProtoJS is a set of JavaScript language extensions focusing on the
+language itself, rather than trying to overcome browser issues. It's
+aim is to increase development productivity, with a minimal overhead
+(read: size).  ...
+
+Note: I'm trying to get things as polished as possible, but my current
+focus is on a project that uses ProtoJS. When that reaches a stable
+state, I'll add documentation and examples here also :-)
+
+In a nutshell:
+$ make
+
+Visit examples/ with your browser to see things in action and
+while waiting for me to write decent documentation, study the code.

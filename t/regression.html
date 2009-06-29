@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <style>
+      .ok { color: green; }
+      .failure { color: red; }
+    </style>
+    <script src="../build/ProtoJS.min.js"></script>
+    <script>
+      function test( answer, expected ) {
+        if( answer === expected ) {
+          document.writeln( "<span class=\"ok\">OK</span>" );
+        } else {
+          document.writeln( "<span class=\"failure\">FAIL" +
+	                    "<pre><u>got</u>:\n" + answer + "\n" +
+	                    "<u>expected</u>:\n" + expected + "</pre></span>");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Class Based Inheritance</h1>
+    <li>Class creation: 
+      <script>
+        var Class1 = Class.extend( {
+          init: function init() {
+            this.data = "class1::init";
+          },
+          aMethod: function aMethod() {
+            this.data += "\nclass1::aMethod";
+          } 
+        });
+        var class1Obj = new Class1();
+        class1Obj.aMethod();
+        test( class1Obj.data, "class1::init\nclass1::aMethod" );
+      </script>
+    </li>
+    <li>Inheritance: 
+      <script>
+        var Class2 = Class1.extend( {
+          init: function init() {
+	    this._super();
+            this.data += "\nclass2::init";
+          },
+          aMethod: function aMethod() {
+	    this._super();
+            this.data += "\nclass2::aMethod";
+          } 
+        });
+        var class2Obj = new Class2();
+        class2Obj.aMethod();
+        test( class2Obj.data, 
+	      "class1::init\nclass2::init\nclass1::aMethod\nclass2::aMethod" );
+      </script>
+    </li>
+    <li>2nd degree Inheritance
+      <script>
+        var Class3 = Class2.extend( {
+          init: function init() {
+	    this._super();
+            this.data += "\nclass3::init";
+          },
+          aMethod: function aMethod() {
+	    this._super();
+            this.data += "\nclass3::aMethod";
+          } 
+        });
+        var class3Obj = new Class3();
+        class3Obj.aMethod();
+        test( class3Obj.data, 
+	      "class1::init\nclass2::init\nclass3::init\n" +
+	      "class1::aMethod\nclass2::aMethod\nclass3::aMethod" );
+      </script>
+    </li>
+  </body>
+</html>
