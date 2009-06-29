@@ -1,21 +1,8 @@
 <html>
   <head>
-    <style>
-      .ok { color: green; }
-      .failure { color: red; }
-    </style>
+    <link rel="stylesheet" type="text/css" href="testing.css" />
     <script src="../build/ProtoJS.min.js"></script>
-    <script>
-      function test( answer, expected ) {
-        if( answer === expected ) {
-          document.writeln( "<span class=\"ok\">OK</span>" );
-        } else {
-          document.writeln( "<span class=\"failure\">FAIL" +
-	                    "<pre><u>got</u>:\n" + answer + "\n" +
-	                    "<u>expected</u>:\n" + expected + "</pre></span>");
-        }
-      }
-    </script>
+    <script src="testing.js"></script>
   </head>
   <body>
     <h1>Class Based Inheritance</h1>
@@ -69,6 +56,21 @@
         test( class3Obj.data, 
 	      "class1::init\nclass2::init\nclass3::init\n" +
 	      "class1::aMethod\nclass2::aMethod\nclass3::aMethod" );
+      </script>
+    </li>
+    <h1>Arrays</h1>
+    <li><b>has</b> support
+      <script>
+	var myArray = [ 10, 20, 30, "apple", "ibm" ];
+	test( myArray.has( "apple" ), true );
+	test( myArray.has( "microsoft" ), false );
+      </script>
+    </li>
+    <li>iterator support
+      <script>
+	var result = "";
+	myArray.iterate( function(part) { result += part; } );
+	test( result, "102030appleibm" );
       </script>
     </li>
   </body>

@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="css/text" href="examples.css" />
+
+    <script src="../src/ProtoJS.js"></script> 
+    <script src="../src/Class.js"></script> 
+    <script src="../src/Mixin.js"></script> 
+    <script src="../src/Array.js"></script> 
+  </head>
+  <body>
+    <h1>Array Based Inheritance Support</h1>
+    <div class="box">
+      <h2>Checking an Array HAS an element</h2>
+      <script>
+	var myArray = [ 10, 20, 30, "apple", "ibm" ];
+	document.writeln( myArray.has( "apple" ) );
+	document.writeln( myArray.has( "microsoft" ) );
+      </script>
+    </div>
+    <div class="box">
+      <h2>Iterating over an Array</h2>
+      <script>
+	myArray.iterate( function(item) {
+	  document.writeln( item );
+	});
+      </script>
+    </div>
+  </body>
+</html>
