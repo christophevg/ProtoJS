@@ -104,5 +104,12 @@
 	test( result, "a=10b=20c=30d=applee=ibm" );
       </script>
     </li>
+    <h1>Function extension</h1>
+    <li><b>scoping</b> support
+      <script>
+	var obj = { x: "data",  };
+	var f = function() { return this.x; };
+	test( f.scope(obj)(), "data" );
+      </script>
   </body>
 </html>

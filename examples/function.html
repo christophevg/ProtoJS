@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="css/text" href="examples.css" />
+
+    <script src="../src/ProtoJS.js"></script> 
+    <script src="../src/Class.js"></script> 
+    <script src="../src/Mixin.js"></script> 
+    <script src="../src/Array.js"></script> 
+    <script src="../src/Hash.js"></script> 
+    <script src="../src/Function.js"></script> 
+  </head>
+  <body>
+    <h1>Functions</h1>
+    <div class="box">
+      <h2>Scoping a Function</h2>
+      <script>
+	var class1 = Class.extend( {
+	  init: function(prefix) {
+	    this.prefix = prefix;
+	  },
+	  loop: function(array) {
+	    array.iterate(function(item, index) {
+	      document.writeln(this.prefix + " : " + index + ". " + item );
+	    });
+	  }
+	});
+
+        new class1("aPrefix").loop( [ 10, 20, 30 ] );
+	document.writeln( "<br>" );
+
+	var class2 = Class.extend( {
+	  init: function(prefix) {
+	    this.prefix = prefix;
+	  },
+	  loop: function(array) {
+	    array.iterate(function(item, index) {
+	      document.writeln(this.prefix + " : " + index + ". " + item );
+	    }.scope(this));
+	  }
+	});
+
+        new class2("anotherPrefix").loop( [ 10, 20, 30 ] );
+      </script>
+    </div>
+  </body>
+</html>
