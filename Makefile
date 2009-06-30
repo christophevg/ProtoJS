@@ -16,11 +16,14 @@ PATCH=patch -N -s
 APP=ProtoJS
 TARGETS=build/${APP}.min.js
 SRCS=src/ProtoJS.js \
-     src/Class.js \
      src/Mixin.js \
+     src/Object.js \
+     src/String.js \
+     src/Number.js \
+     src/Class.js \
      src/Array.js \
      src/Hash.js \
-     src/Function.js
+     src/Function.js \
 
 VERSION=$(shell git describe --tags | cut -d'-' -f1,2)
 LIBS=

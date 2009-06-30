@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="css/text" href="examples.css" />
+
+    <script src="../src/ProtoJS.js"></script> 
+    <script src="../src/Mixin.js"></script> 
+    <script src="../src/Object.js"></script> 
+    <script src="../src/String.js"></script> 
+    <script src="../src/Number.js"></script> 
+    <script src="../src/Class.js"></script> 
+    <script src="../src/Array.js"></script> 
+    <script src="../src/Hash.js"></script>    
+    <script src="../src/Function.js"></script> 
+  </head>
+  <body>
+    <h1>Object extensions</h1>
+    <div class="box">
+      <h2>Various Type Checks</h2>
+      <script>
+	document.writeln( [ 1, 2, 3 ].isArray() );
+	document.writeln( Object.isArray( [ 1, 2, 3 ] ) );
+
+	document.writeln( $H({ 1:1, 2:2, 3:3 }).isHash() );
+	document.writeln( Object.isHash( $H({ 1:1, 2:2, 3:3 }) ) );
+	
+	document.writeln( function() { }.isFunction() );
+
+	document.writeln( "blah".isString() );
+	document.writeln( Object.isString("blah") );
+
+	document.writeln( (123).isNumber() );
+	document.writeln( Object.isNumber(1) );
+
+	var u; document.writeln( Object.isUndefined(u) );
+	
+	var c = Class.extend( { init: function() { } } );
+	var o = new c();
+	document.writeln( o.isArray() === false );
+      </script>
+    </div>
+  </body>
+</html>

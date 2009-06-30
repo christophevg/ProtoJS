@@ -16,6 +16,13 @@
 	initializing = true;
 	var prototype = new this();
 	initializing = false;
+
+	// Add some default typechecking methods to every class
+	prototype.isArray    = function() { return false; };
+	prototype.isHash     = function() { return false; };
+	prototype.isFunction = function() { return false; };
+	prototype.isNumber   = function() { return false; };
+	prototype.isString   = function() { return false; };
 	
 	// Copy the properties over onto the new prototype
 	for (var name in prop) {

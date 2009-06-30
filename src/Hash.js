@@ -31,7 +31,13 @@ var Hash = Class.extend( {
 	for(var key in this.hash ) {
 	    handler.call(context, key, this.hash[key]);
 	}
-    }
+    },
+
+    isArray   : function() { return false; },
+    isHash    : function() { return true;  },
+    isFunction: function() { return false; },
+    isString  : function() { return false; },
+    isNumber  : function() { return false; }
 } );
 
 var $H = function(hash) { return new Hash(hash); }

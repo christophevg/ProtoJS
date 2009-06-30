@@ -58,7 +58,8 @@
 	      "class1::aMethod\nclass2::aMethod\nclass3::aMethod" );
       </script>
     </li>
-    <h1>Arrays</h1>
+
+    <h1>Array extensions</h1>
     <li><b>has</b> support
       <script>
 	var myArray = [ 10, 20, 30, "apple", "ibm" ];
@@ -73,7 +74,8 @@
 	test( result, "102030appleibm" );
       </script>
     </li>
-    <h1>Hashes</h1>
+
+    <h1>Hash Class extension</h1>
     <li><b>keys</b> support
       <script>
 	var myHash = $H( { a: 10, b:20, c:30, d:"apple", e:"ibm" } );
@@ -104,12 +106,31 @@
 	test( result, "a=10b=20c=30d=applee=ibm" );
       </script>
     </li>
-    <h1>Function extension</h1>
+
+    <h1>Function extensions</h1>
     <li><b>scoping</b> support
       <script>
 	var obj = { x: "data",  };
 	var f = function() { return this.x; };
 	test( f.scope(obj)(), "data" );
+      </script>
+    </li>
+
+    <h1>Object extensions</h1>
+    <li>type checking
+      <script>
+	// TODO: test ALL combo's ;-)
+	test( "123".isString(), true );
+	test( Object.isString( "123" ), true );
+
+	test( [ 1, 2, 3 ].isArray(), true );
+	test( "123".isArray(), false );
+
+	test( (123).isString(), false );
+	test( (123).isNumber(), true );
+
+	test( Object.isArray( [ 1, 2 ] ), true );
+	test( Object.isArray( { 1:1, 2:2 } ), false );
       </script>
   </body>
 </html>
