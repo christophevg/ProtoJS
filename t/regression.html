@@ -76,10 +76,17 @@
     </li>
 
     <h1>Hash Class extension</h1>
-    <li><b>keys</b> support
+    <li><b>get/set</b> support
       <script>
 	var myHash = $H( { a: 10, b:20, c:30, d:"apple", e:"ibm" } );
-	test( myHash.keys().toString(), "a,b,c,d,e" );
+	myHash.set( "d", "Apple" );
+	test( myHash.get( "d" ) == "Apple", true );
+	myHash.set( "d", "apple" );
+      </script>
+    </li>
+    <li><b>keys</b> support
+      <script>
+	test( myHash.keys().toString(), "a,b,c,d,e" );	
       </script>
     </li>
     <li><b>values</b> support

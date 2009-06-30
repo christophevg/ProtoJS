@@ -3,6 +3,14 @@ var Hash = Class.extend( {
       this.hash = hash;
     },
 
+    set: function( key, value ) {
+	this.hash[key] = value;
+    },
+
+    get: function( key ) {
+	return this.hash[key];
+    },
+
     keys: function keys() {
 	var keys = [];
 	this.iterate( function( key, value ) {
