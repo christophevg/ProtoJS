@@ -1,6 +1,6 @@
 ProtoJS.String = {
     contains : function( needle ) {
-	return this.indexOf( needle ) > 0;
+	return this.indexOf( needle ) > -1;
     },
 
     isArray   : function() { return false; },
