@@ -1,6 +1,6 @@
 var Hash = Class.extend( {
     init: function init(hash) {
-      this.hash = hash;
+	this.hash = hash || {};
     },
 
     set: function( key, value ) {
