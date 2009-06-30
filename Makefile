@@ -16,6 +16,7 @@ PATCH=patch -N -s
 APP=ProtoJS
 TARGETS=build/${APP}.min.js
 SRCS=src/ProtoJS.js \
+     src/Event.js \
      src/Mixin.js \
      src/Object.js \
      src/String.js \

@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="css/text" href="examples.css" />
+
+    <script src="../src/ProtoJS.js"></script> 
+    <script src="../src/Mixin.js"></script> 
+    <script src="../src/Object.js"></script> 
+    <script src="../src/Event.js"></script> 
+    <script src="../src/String.js"></script> 
+    <script src="../src/Number.js"></script> 
+    <script src="../src/Class.js"></script> 
+    <script src="../src/Array.js"></script> 
+    <script src="../src/Hash.js"></script>    
+    <script src="../src/Function.js"></script> 
+  </head>
+  <body>
+    <h1>Event</h1>
+    <div class="box">
+      <h2>Observing events</h2>
+      <div id="log"></div>
+      <script>
+	function add( value ) {
+	  document.getElementById( "log" ).innerHTML = 
+	    document.getElementById( "log" ).innerHTML + "<br>" + value;
+	}
+	ProtoJS.Event.observe( window, "load", function() { add( "1" ); } );
+	ProtoJS.Event.observe( window, "load", function() { add( "2" ); } );
+      </script>
+    </div>
+  </body>
+</html>
