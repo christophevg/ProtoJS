@@ -30,5 +30,26 @@
 	});
       </script>
     </div>
+    <div class="box">
+      <h2>Removing an item from an Array</h2>
+      <script>
+	document.writeln( [ 1, 2, 3, 4, 5 ].remove(2, 4) );
+      </script>
+    </div>
+    <div class="box">
+      <h2>DeepCopy an Array</h2>
+      <script>
+	var x = [ 1, 2, 3, 4, 5 ];
+	var y = x;
+	var z = x.dup();
+	document.writeln( x ); document.writeln( "<br>" );
+	document.writeln( y ); document.writeln( "<br>" );
+	document.writeln( z ); document.writeln( "<br>" );
+	x.remove( 2, 4 );
+	document.writeln( x ); document.writeln( "<br>" );
+	document.writeln( y ); document.writeln( "<br>" );
+	document.writeln( z ); document.writeln( "<br>" );
+      </script>
+    </div>
   </body>
 </html>
