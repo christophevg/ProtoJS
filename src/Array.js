@@ -17,3 +17,10 @@ ProtoJS.Array =  {
 };
 
 ProtoJS.mix( ProtoJS.Array, Array.prototype );
+
+function $A(object) {
+    var length = object.length || 0;
+    var results = new Array(length);
+    while (length--) results[length] = object[length];
+    return results;
+}

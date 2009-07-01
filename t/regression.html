@@ -122,6 +122,15 @@
 	test( f.scope(obj)(), "data" );
       </script>
     </li>
+    <li><b>after</b> support
+      <span id="result" class="failure">FAIL</span>
+      <script>
+	var x = function(result) {
+	  document.getElementById("result").className = "ok";
+	  document.getElementById("result").innerHTML = result;
+	}.after(10, "OK");
+      </script>
+    </li>
 
     <h1>Object extensions</h1>
     <li>type checking
