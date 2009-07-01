@@ -97,6 +97,11 @@
 	test( x != y && x.compare(y), true );
       </script>
     </li>
+    <li><b>unique</b> support
+      <script>
+	test( [ 1, 2, 2, 3, 3 ].unique().compare( [ 1, 2, 3 ] ), true );
+      </script>
+    </li>
 
     <h1>Hash Class extension</h1>
     <li><b>get/set</b> support

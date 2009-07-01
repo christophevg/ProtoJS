@@ -14,6 +14,15 @@ ProtoJS.Array =  {
 	return this.indexOf(needle) > -1;
     },
 
+    unique: function unique() {
+	var old = this.dup();
+	this.clear();
+	old.iterate( function(item) { 
+	    if( !this.has(item) ) { this.push(item); }
+	}.scope(this) );
+	return this;
+    },
+
     iterate: function(handler, context) {
 	for(var i=0, length=this.length; i<length; i++ ) {
 	    handler.call(context, this[i], i);
