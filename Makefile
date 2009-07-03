@@ -25,6 +25,7 @@ SRCS=src/ProtoJS.js \
      src/Array.js \
      src/Hash.js \
      src/Function.js \
+     src/Ajax.js
 
 VERSION=$(shell git describe --tags | cut -d'-' -f1,2)
 LIBS=

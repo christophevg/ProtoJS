@@ -177,10 +177,19 @@
 	test( Object.isArray( { 1:1, 2:2 } ), false );
       </script>
     </li>
+
     <h1>String extensions</h1>
     <li><b>contains</b> support
       <script>
 	test( "123".contains( "2" ), true );
+      </script>
+    </li>
+
+    <h1>Ajax support</h1>
+    <li>Synchronous <b>fetch</b> support
+      <script>
+	var data = new ProtoJS.Ajax().fetch( "data.txt" );
+	test( data, "123\n" );
       </script>
     </li>
   </body>
