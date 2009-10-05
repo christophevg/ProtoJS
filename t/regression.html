@@ -19,6 +19,13 @@
         var class1Obj = new Class1();
         class1Obj.aMethod();
         test( class1Obj.data, "class1::init\nclass1::aMethod" );
+		var Class1b = Class.extend( {
+			toString: function toString() {
+				return "overridden";
+			}
+		});
+		var class1bObj = new Class1b();
+		test( class1bObj.toString(), "overridden" );
       </script>
     </li>
     <li>Inheritance: 
