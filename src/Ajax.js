@@ -13,7 +13,7 @@ ProtoJS.Ajax = Class.extend( {
   },
 
   fetch: function(url, callback) {
-    this.xmlhttp.open("GET", url, false);
+    this.xmlhttp.open("GET", url, typeof callback == "function" );
     if(callback) {
       this.xmlhttp.onreadystatechange = function() {
         callback.call(this, this.xmlhttp);
