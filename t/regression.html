@@ -1,203 +1,214 @@
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="testing.css" />
-    <script type="text/javascript" src="../build/ProtoJS.min.js"></script>
-    <script type="text/javascript" src="testing.js"></script>
-  </head>
-  <body>
-    <h1>Class Based Inheritance</h1>
-    <li>Class creation: 
-      <script>
-        var Class1 = Class.extend( {
-          init: function init() {
-            this.data = "class1::init";
-          },
-          aMethod: function aMethod() {
-            this.data += "\nclass1::aMethod";
-          } 
-        });
-        var class1Obj = new Class1();
-        class1Obj.aMethod();
-        test( class1Obj.data, "class1::init\nclass1::aMethod" );
-		var Class1b = Class.extend( {
-			toString: function toString() {
-				return "overridden";
-			}
-		});
-		var class1bObj = new Class1b();
-		test( class1bObj.toString(), "overridden" );
-      </script>
-    </li>
-    <li>Inheritance: 
-      <script>
-        var Class2 = Class1.extend( {
-          init: function init() {
-	    this._super();
-            this.data += "\nclass2::init";
-          },
-          aMethod: function aMethod() {
-	    this._super();
-            this.data += "\nclass2::aMethod";
-          } 
-        });
-        var class2Obj = new Class2();
-        class2Obj.aMethod();
-        test( class2Obj.data, 
-	      "class1::init\nclass2::init\nclass1::aMethod\nclass2::aMethod" );
-      </script>
-    </li>
-    <li>2nd degree Inheritance
-      <script>
-        var Class3 = Class2.extend( {
-          init: function init() {
-	    this._super();
-            this.data += "\nclass3::init";
-          },
-          aMethod: function aMethod() {
-	    this._super();
-            this.data += "\nclass3::aMethod";
-          } 
-        });
-        var class3Obj = new Class3();
-        class3Obj.aMethod();
-        test( class3Obj.data, 
-	      "class1::init\nclass2::init\nclass3::init\n" +
-	      "class1::aMethod\nclass2::aMethod\nclass3::aMethod" );
-      </script>
-    </li>
+<head>
+  <link rel="stylesheet" type="text/css" href="testing.css" />
+  <script type="text/javascript" src="../build/ProtoJS.min.js"></script>
+  <script type="text/javascript" src="testing.js"></script>
+</head>
+<body>
+  <h1>Class Based Inheritance</h1>
+  <li>Class creation: 
+    <script>
+    var Class1 = Class.extend( {
+      init: function init() {
+        this.data = "class1::init";
+      },
+      aMethod: function aMethod() {
+        this.data += "\nclass1::aMethod";
+      } 
+    });
+    var class1Obj = new Class1();
+    class1Obj.aMethod();
+    test( class1Obj.data, "class1::init\nclass1::aMethod" );
+    var Class1b = Class.extend( {
+      toString: function toString() {
+        return "overridden";
+      }
+    });
+    var class1bObj = new Class1b();
+    test( class1bObj.toString(), "overridden" );
+    </script>
+  </li>
+  <li>Inheritance: 
+    <script>
+    var Class2 = Class1.extend( {
+      init: function init() {
+        this._super();
+        this.data += "\nclass2::init";
+      },
+      aMethod: function aMethod() {
+        this._super();
+        this.data += "\nclass2::aMethod";
+      } 
+    });
+    var class2Obj = new Class2();
+    class2Obj.aMethod();
+    test( class2Obj.data, 
+          "class1::init\nclass2::init\nclass1::aMethod\nclass2::aMethod" );
+    </script>
+  </li>
+  <li>2nd degree Inheritance
+    <script>
+    var Class3 = Class2.extend( {
+      init: function init() {
+        this._super();
+        this.data += "\nclass3::init";
+      },
+      aMethod: function aMethod() {
+        this._super();
+        this.data += "\nclass3::aMethod";
+      } 
+    });
+    var class3Obj = new Class3();
+    class3Obj.aMethod();
+    test( class3Obj.data, 
+          "class1::init\nclass2::init\nclass3::init\n" +
+          "class1::aMethod\nclass2::aMethod\nclass3::aMethod" );
+    </script>
+  </li>
 
-    <h1>Array extensions</h1>
-    <li><b>has</b> support
-      <script>
-	var myArray = [ 10, 20, 30, "apple", "ibm" ];
-	test( myArray.has( "apple" ), true );
-	test( myArray.has( "microsoft" ), false );
-      </script>
-    </li>
-    <li>iterator support
-      <script>
-	var result = "";
-	myArray.iterate( function(part) { result += part; } );
-	test( result, "102030appleibm" );
-      </script>
-    </li>
-    <li><b>compare</b> support
-      <script>
-	test( [ 1, 2, 3 ].compare( [ 1, 2, 3 ] ), true );
-	test( [ 1, 2, 3 ].compare( [ 1, 3 ] ), false );
-      </script>
-    </li>
-    <li><b>remove</b> support
-      <script>
-	test( [ 1, 2, 3, 4, 5 ].remove( 2, 4 ).compare( [ 1, 3, 5 ] ), true );
-      </script>
-    </li>
-    <li><b>clear</b> support
-      <script>
-	test( [ 1, 2, 3, 4, 5 ].clear().compare([]), true );
-      </script>
-    </li>
-    <li><b>dup</b> support
-      <script>
-	var x = [ 1, 2, 3 ];
-	var y = x.dup();
-	test( x != y && x.compare(y), true );
-      </script>
-    </li>
-    <li><b>unique</b> support
-      <script>
-	test( [ 1, 2, 2, 3, 3 ].unique().compare( [ 1, 2, 3 ] ), true );
-      </script>
-    </li>
+  <h1>Array extensions</h1>
+  <li><b>has</b> support
+    <script>
+    var myArray = [ 10, 20, 30, "apple", "ibm" ];
+    test( myArray.has( "apple" ), true );
+    test( myArray.has( "microsoft" ), false );
+    </script>
+  </li>
+  <li>iterator support
+    <script>
+    var result = "";
+    myArray.iterate( function(part) { result += part; } );
+    test( result, "102030appleibm" );
+    </script>
+  </li>
+  <li><b>compare</b> support
+    <script>
+    test( [ 1, 2, 3 ].compare( [ 1, 2, 3 ] ), true );
+    test( [ 1, 2, 3 ].compare( [ 1, 3 ] ), false );
+    </script>
+  </li>
+  <li><b>remove</b> support
+    <script>
+    test( [ 1, 2, 3, 4, 5 ].remove( 2, 4 ).compare( [ 1, 3, 5 ] ), true );
+    </script>
+  </li>
+  <li><b>clear</b> support
+    <script>
+    test( [ 1, 2, 3, 4, 5 ].clear().compare([]), true );
+    </script>
+  </li>
+  <li><b>dup</b> support
+    <script>
+    var x = [ 1, 2, 3 ];
+    var y = x.dup();
+    test( x != y && x.compare(y), true );
+    </script>
+  </li>
+  <li><b>unique</b> support
+    <script>
+    test( [ 1, 2, 2, 3, 3 ].unique().compare( [ 1, 2, 3 ] ), true );
+    </script>
+  </li>
 
-    <h1>Hash Class extension</h1>
-    <li><b>get/set</b> support
-      <script>
-	var myHash = $H( { a: 10, b:20, c:30, d:"apple", e:"ibm" } );
-	myHash.set( "d", "Apple" );
-	test( myHash.get( "d" ) == "Apple", true );
-	myHash.set( "d", "apple" );
-      </script>
-    </li>
-    <li><b>keys</b> support
-      <script>
-	test( myHash.keys().toString(), "a,b,c,d,e" );	
-      </script>
-    </li>
-    <li><b>values</b> support
-      <script>
-	test( myHash.values().toString(), "10,20,30,apple,ibm" );
-      </script>
-    </li>
-    <li><b>hasKey</b> support
-      <script>
-	test( myHash.hasKey( "c" ), true );
-	test( myHash.hasKey( 1 ), false );
-      </script>
-    </li>
-    <li><b>hasValue</b> support
-      <script>
-	test( myHash.hasValue( "apple" ), true );
-	test( myHash.hasValue( 1 ), false );
-      </script>
-    </li>
-    <li>iterator support
-      <script>
-	var result = "";
-	myHash.iterate( function(key, value) { result += key + "=" + value; } );
-	test( result, "a=10b=20c=30d=applee=ibm" );
-      </script>
-    </li>
+  <h1>Hash Class extension</h1>
+  <li><b>get/set</b> support
+    <script>
+    var myHash = $H( { a: 10, b:20, c:30, d:"apple", e:"ibm" } );
+    myHash.set( "d", "Apple" );
+    test( myHash.get( "d" ) == "Apple", true );
+    myHash.set( "d", "apple" );
+    </script>
+  </li>
+  <li><b>keys</b> support
+    <script>
+    test( myHash.keys().toString(), "a,b,c,d,e" );	
+    </script>
+  </li>
+  <li><b>values</b> support
+    <script>
+    test( myHash.values().toString(), "10,20,30,apple,ibm" );
+    </script>
+  </li>
+  <li><b>hasKey</b> support
+    <script>
+    test( myHash.hasKey( "c" ), true );
+    test( myHash.hasKey( 1 ), false );
+    </script>
+  </li>
+  <li><b>hasValue</b> support
+    <script>
+    test( myHash.hasValue( "apple" ), true );
+    test( myHash.hasValue( 1 ), false );
+    </script>
+  </li>
+  <li>iterator support
+    <script>
+    var result = "";
+    myHash.iterate(function(key, value) { result += key + "=" + value; });
+    test( result, "a=10b=20c=30d=applee=ibm" );
+    </script>
+  </li>
 
-    <h1>Function extensions</h1>
-    <li><b>scoping</b> support
-      <script>
-	var obj = { x: "data",  };
-	var f = function() { return this.x; };
-	test( f.scope(obj)(), "data" );
-      </script>
-    </li>
-    <li><b>after</b> support
-      <span id="result" class="failure">FAIL</span>
-      <script>
-	var x = function(result) {
-	  document.getElementById("result").className = "ok";
-	  document.getElementById("result").innerHTML = result;
-	}.after(10, "OK");
-      </script>
-    </li>
+  <h1>Function extensions</h1>
+  <li><b>scoping</b> support
+    <script>
+    var obj = { x: "data",  };
+    var f = function() { return this.x; };
+    test( f.scope(obj)(), "data" );
+    </script>
+  </li>
+  <li><b>after</b> support
+    <span id="wait-result" class="failure">FAIL</span>
+    <script>
+    var x = function(result) {
+      document.getElementById("wait-result").className = "ok";
+      document.getElementById("wait-result").innerHTML = result;
+    }.after(10, "OK");
+    </script>
+  </li>
 
-    <h1>Object extensions</h1>
-    <li>type checking
-      <script>
-	// TODO: test ALL combo's ;-)
-	test( "123".isString(), true );
-	test( Object.isString( "123" ), true );
+  <h1>Object extensions</h1>
+  <li>type checking
+    <script>
+    // TODO: test ALL combo's ;-)
+    test( "123".isString(), true );
+    test( Object.isString( "123" ), true );
 
-	test( [ 1, 2, 3 ].isArray(), true );
-	test( "123".isArray(), false );
+    test( [ 1, 2, 3 ].isArray(), true );
+    test( "123".isArray(), false );
 
-	test( (123).isString(), false );
-	test( (123).isNumber(), true );
+    test( (123).isString(), false );
+    test( (123).isNumber(), true );
 
-	test( Object.isArray( [ 1, 2 ] ), true );
-	test( Object.isArray( { 1:1, 2:2 } ), false );
-      </script>
-    </li>
+    test( Object.isArray( [ 1, 2 ] ), true );
+    test( Object.isArray( { 1:1, 2:2 } ), false );
+    </script>
+  </li>
 
-    <h1>String extensions</h1>
-    <li><b>contains</b> support
-      <script>
-	test( "123".contains( "2" ), true );
-      </script>
-    </li>
+  <h1>String extensions</h1>
+  <li><b>contains</b> support
+    <script>
+    test( "123".contains( "2" ), true );
+    </script>
+  </li>
 
-    <h1>Ajax support</h1>
-    <li>Synchronous <b>fetch</b> support
-      <script>
-	var data = new ProtoJS.Ajax().fetch( "data.txt" );
-	test( data, "123\n" );
-      </script>
-    </li>
-  </body>
+  <h1>Ajax support</h1>
+  <li>Synchronous <b>fetch</b> support
+    <script>
+    var data = new ProtoJS.Ajax().fetch( "data.txt" );
+    test( data, "123\n" );
+    </script>
+  </li>
+  <li>Asynchronous <b>fetch</b> support
+    <span id="ajax-async-result" class="failure">FAIL</span>
+    <script>
+    new ProtoJS.Ajax().fetch( "data.txt", function(result) {
+      if( result.responseText == "123\n" ) {
+        document.getElementById("ajax-async-result").className = "ok";
+        document.getElementById("ajax-async-result").innerHTML = "OK";
+      }
+    });
+    </script>
+  </li>
+</body>
 </html>
