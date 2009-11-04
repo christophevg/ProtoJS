@@ -191,6 +191,12 @@
     test( "123".contains( "2" ), true );
     </script>
   </li>
+  <li><b>trim</b> support
+    <script>
+    test( " 123 ".trim(), "123" );
+    test( ProtoJS.String.trim( " 123\n\t "), "123");
+    </script>
+  </li>
 
   <h1>Ajax support</h1>
   <li>Synchronous <b>fetch</b> support
