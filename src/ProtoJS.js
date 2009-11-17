@@ -9,3 +9,7 @@ var ProtoJS = {
     MobileSafari: !!navigator.userAgent.match(/Apple.*Mobile.*Safari/)
   }
 };
+
+if( typeof console == "undefined" ) {
+  console = { log: function() {} };
+}
