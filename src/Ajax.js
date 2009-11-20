@@ -29,7 +29,8 @@ ProtoJS.Ajax = Class.extend( {
   fetchUsingXDR: function(url, callback) {
     ProtoJS.XDR.push(callback);
     var e  = document.createElement("script");
-    e.src  = url + "?f=ProtoJS.XDR[" + (ProtoJS.XDR.length-1) +  "]";
+    var op = url.contains('?') ? "&" : "?";
+    e.src  = url + op +"f=ProtoJS.XDR[" + (ProtoJS.XDR.length-1) +  "]";
     e.type = "text/javascript";
     document.getElementsByTagName("head")[0].appendChild(e); 
   }
