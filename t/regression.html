@@ -216,5 +216,19 @@
     });
     </script>
   </li>
+  <li>Cross-Domain-Request support (our way) 
+    <span id="xdr-async-result" class="failure">FAIL</span>
+    <script>
+    var parts = window.location.pathname.split('/');
+    parts.pop();
+    var myUrl = window.location.protocol + "//" + 
+              window.location.host + parts.join('/');
+    new ProtoJS.Ajax().fetch( myUrl + "/data.js", function(result) {
+      if( result == "123\n" ) {
+        document.getElementById("xdr-async-result").className = "ok";
+        document.getElementById("xdr-async-result").innerHTML = "OK";
+      }
+    });
+    </script>
 </body>
 </html>

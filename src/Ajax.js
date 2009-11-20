@@ -13,6 +13,9 @@ ProtoJS.Ajax = Class.extend( {
   },
 
   fetch: function(url, callback) {
+    if( url.substring(0,4) == "http" ) { 
+      return this.fetchUsingXDR(url, callback); 
+    }
     this.xmlhttp.open("GET", url, typeof callback == "function" );
     if(callback) {
       this.xmlhttp.onreadystatechange = function() {
@@ -22,4 +25,16 @@ ProtoJS.Ajax = Class.extend( {
     this.xmlhttp.send(null);
     return this.xmlhttp.responseText;
   },
+
+  fetchUsingXDR: function(url, callback) {
+    ProtoJS.XDR.push(callback);
+    var e  = document.createElement("script");
+    e.src  = url + "?f=ProtoJS.XDR[" + (ProtoJS.XDR.length-1) +  "]";
+    e.type = "text/javascript";
+    document.getElementsByTagName("head")[0].appendChild(e); 
+  }
 });
+
+// globally available array for storing callback functions 
+// for our XDR implementation
+ProtoJS.XDR = [];
