@@ -191,6 +191,12 @@
     test( "123".contains( "2" ), true );
     </script>
   </li>
+  <li><b>containsOneOf</b> support
+    <script>
+    test( "123".containsOneOf( [ "a", "2", "b" ] ), true );
+    test( "123".containsOneOf( [ "a", "b", "c" ] ), false );
+    </script>
+  </li>
   <li><b>trim</b> support
     <script>
     test( " 123 ".trim(), "123" );

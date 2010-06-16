@@ -1,18 +1,26 @@
 ProtoJS.String = {
-  contains : function( needle ) {
+  contains : function contains( needle ) {
     return this.indexOf( needle ) > -1;
   },
 
-  trim : function( value ) {
+  containsOneOf: function containsOneOf( needles ) {
+    var result = false;
+    needles.iterate( function( needle ) {
+      result = result || this.contains( needle );
+    }.scope(this) );
+    return result;
+  },
+
+  trim : function trim( value ) {
     if( typeof this.replace == "function" ) { value = this; }
     return value.replace(/^\s*/, "").replace(/\s*$/, "");
   },
 
-  isArray   : function() { return false; },
-  isHash    : function() { return false; },
-  isFunction: function() { return false; },
-  isString  : function() { return true;  },
-  isNumber  : function() { return false; }
+  isArray   : function isArray()    { return false; },
+  isHash    : function isHash()     { return false; },
+  isFunction: function isFunction() { return false; },
+  isString  : function isString()   { return true;  },
+  isNumber  : function isNumber()   { return false; }
 };
 
 ProtoJS.mix( ProtoJS.String, String.prototype );
