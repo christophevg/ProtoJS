@@ -55,16 +55,17 @@
     // toString doesn't show up in the iterated properties in JScript
     // see: https://developer.mozilla.org/en/ECMAScript_DontEnum_attribute
     // quick fix: explicitly test for it
-    if( ProtoJS.Browser.IE && prop["toString"] ) {
-      prototype["toString"] =
-      _make_wrapped_method( "toString", prop["toString"]);
+    if( ProtoJS.Browser.IE && prop.toString ) {
+      prototype.toString =
+      _make_wrapped_method( "toString", prop.toString);
     }
 
     // The dummy class constructor
     function Class() {
       // All construction is actually done in the init method
-      if ( !initializing && this.init )
-      this.init.apply(this, arguments);
+      if ( !initializing && this.init ) {
+        this.init.apply(this, arguments);
+      }
     }
 
     // Populate our constructed prototype object

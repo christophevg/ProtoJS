@@ -12,4 +12,4 @@ ProtoJS.Event = {
     }
     return element;
   }
-}
+};
