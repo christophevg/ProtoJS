@@ -2,34 +2,30 @@
   <head>
     <link rel="stylesheet" type="css/text" href="examples.css" />
 
-    <script src="../src/ProtoJS.js"></script> 
-    <script src="../src/Mixin.js"></script> 
-    <script src="../src/Object.js"></script> 
-    <script src="../src/String.js"></script> 
-    <script src="../src/Number.js"></script> 
-    <script src="../src/Class.js"></script> 
-    <script src="../src/Array.js"></script> 
-    <script src="../src/Hash.js"></script>    
-    <script src="../src/Function.js"></script> 
+    <script type="text/javascript" src="includes.js"></script>
   </head>
   <body>
     <h1>Class Based Inheritance Support</h1>
+
     <div class="box">
       <h2>Creating a New Class</h2>
       <script>
-	var Shape = Class.extend( {
-	  init: function() {
-	    document.writeln( "shape::init<br>" );
-	  },
-	  aMethod: function() {
-	    document.writeln( "shape::aMethod<br>" );
-	  }
-	});
-	new Shape().aMethod();
+      var Shape = Class.extend( {
+        init: function() {
+          document.writeln( "shape::init<br/>" );
+        },
+        aMethod: function() {
+          document.writeln( "shape::aMethod<br/>" );
+        }
+      });
+      new Shape().aMethod();
       </script>
+      
     </div>
+
     <div class="box">
       <h2>Extending a Class</h2>
+
       <script>
 	var Rectangle = Shape.extend( {
 	  init: function() {
@@ -43,7 +39,9 @@
 	});
 	new Rectangle().aMethod();
       </script>
+
     </div>
+
     <div class="box">
       <h2>Extending an Extended Class</h2>
       <script>

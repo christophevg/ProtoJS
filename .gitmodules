@@ -1,0 +1,3 @@
+[submodule "lib/common.make"]
+	path = lib/common.make
+	url = http://git.thesoftwarefactory.be/pub/common.make.git
