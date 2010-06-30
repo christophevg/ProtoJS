@@ -1,17 +1,18 @@
 APP         = ProtoJS
 BUILD_STYLE = simple
 
-SRCS=src/ProtoJS.js \
-     src/Event.js \
-     src/Mixin.js \
-     src/Object.js \
-     src/String.js \
-     src/Number.js \
-     src/Class.js \
-     src/Array.js \
-     src/Hash.js \
-     src/Function.js \
-     src/Ajax.js
+SRCS = src/IEFixes.js \
+       src/ProtoJS.js \
+       src/Event.js \
+       src/Mixin.js \
+       src/Object.js \
+       src/String.js \
+       src/Number.js \
+       src/Class.js \
+       src/Array.js \
+       src/Hash.js \
+       src/Function.js \
+       src/Ajax.js
 
 #############################################################################
 # boilerplate to kickstart common.make
