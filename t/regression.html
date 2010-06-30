@@ -242,5 +242,24 @@
       }
     });
     </script>
+  </li>
+
+  <h1>Timer support</h1>
+  <li>Basic usage
+    <span id="simple-timer-result" class="failure">testing...</span>
+    <script>
+      var timer = new ProtoJS.Timer();
+      timer.start();
+      var x = function() {
+        timer.stop();
+        if( Math.round(timer.getElapsed() / 100) == 11 ) {
+          document.getElementById("simple-timer-result").className = "ok";
+          document.getElementById("simple-timer-result").innerHTML = "OK";
+        } else {
+          document.getElementById("simple-timer-result").innerHTML = "FAIL";
+        }
+      }.after(1100);
+    </script>
+  </li>
 </body>
 </html>

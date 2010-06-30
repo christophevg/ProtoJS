@@ -12,7 +12,8 @@ SRCS = src/IEFixes.js \
        src/Array.js \
        src/Hash.js \
        src/Function.js \
-       src/Ajax.js
+       src/Ajax.js \
+       src/Timer.js
 
 #############################################################################
 # boilerplate to kickstart common.make
