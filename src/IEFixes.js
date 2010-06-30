@@ -13,3 +13,15 @@ if( ! window.Node ) {
     Node.DOCUMENT_FRAGMENT_NODE = 11;
     Node.NOTATION_NODE = 12;
 }
+
+// IE misses indexOf ... and so do we ;-)
+if( !Array.indexOf ) {
+  Array.prototype.indexOf = function(obj){
+    for(var i=0; i<this.length; i++){
+      if(this[i]==obj){
+        return i;
+      }
+    }
+    return -1;
+  };
+}
