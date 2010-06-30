@@ -272,5 +272,22 @@
       test( font.getPctSize(), 130   );
     </script>
   </li>
+
+  <h1>Event support</h1>
+  <li>Event Handling
+    <span id="event-handling-result" class="failure">FAIL</span>
+    <script>
+      var class1 = Class.extend( {
+        doIt: function() { this.fireEvent( "action" ); }
+      } );
+      ProtoJS.Event.enable( class1.prototype );
+      var obj1 = new class1();
+      obj1.on( "action", function() {
+        document.getElementById("event-handling-result").className = "ok";
+        document.getElementById("event-handling-result").innerHTML = "OK";
+      } );
+      obj1.doIt();
+    </script>
+  </li>
 </body>
 </html>

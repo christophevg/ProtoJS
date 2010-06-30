@@ -3,8 +3,8 @@ BUILD_STYLE = simple
 
 SRCS = src/IEFixes.js \
        src/ProtoJS.js \
-       src/Event.js \
        src/Mixin.js \
+       src/Event.js \
        src/Object.js \
        src/String.js \
        src/Number.js \
