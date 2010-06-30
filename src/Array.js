@@ -48,6 +48,22 @@ ProtoJS.Array =  {
     return this;
   },
 
+  min: function min() {
+    var min = null;
+    this.iterate(function(item) {
+      if( min == null || item < min ) { min = item; }
+    } );
+    return min;
+  },
+
+  max: function max() {
+    var max = null;
+    this.iterate(function(item) {
+      if( max == null || item > max ) { max = item; }
+    } );
+    return max;
+  },
+
   isArray   : function() { return true;  },
   isHash    : function() { return false; },
   isFunction: function() { return false; },

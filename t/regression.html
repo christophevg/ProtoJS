@@ -109,6 +109,12 @@
     test( [ 1, 2, 2, 3, 3 ].unique().compare( [ 1, 2, 3 ] ), true );
     </script>
   </li>
+  <li><b>min/max</b> support
+    <script>
+    test( [ -999, 1, 999].min(), -999 );
+    test( [ -999, 1, 999].max(), 999 );
+    </script>
+  </li>
 
   <h1>Hash Class extension</h1>
   <li><b>get/set</b> support
