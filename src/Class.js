@@ -19,13 +19,6 @@
     var prototype = new this();
     initializing = false;
 
-    // Add some default typechecking methods to every class
-    prototype.isArray    = function() { return false; };
-    prototype.isHash     = function() { return false; };
-    prototype.isFunction = function() { return false; };
-    prototype.isNumber   = function() { return false; };
-    prototype.isString   = function() { return false; };
-
     // A function to create a wrapped inherited method
     function _make_wrapped_method(name, fn) {
       return function() {
@@ -44,7 +37,7 @@
       };
     }
 
-    // Copy the properties over onto the new prototype
+   	// Copy the properties over onto the new prototype
     for (var name in prop) {
       // Check if we're overwriting an existing function
       prototype[name] = typeof prop[name] == "function" &&

@@ -38,8 +38,8 @@ ProtoJS.Array =  {
     return this;
   },
 
-  remove: function() {
-    var needles = $A(arguments);
+  remove: function(array) {
+    var needles = array.isArray() ? array : $A(arguments);
     var old = this.dup();
     this.clear();
     old.iterate( function(item) { 

@@ -14,7 +14,10 @@ SRCS = src/IEFixes.js \
        src/Function.js \
        src/Ajax.js \
        src/Timer.js \
-       src/Font.js
+       src/Font.js \
+       src/Test.js
+
+CLI_SRCS = ${SRCS}
 
 #############################################################################
 # boilerplate to kickstart common.make
