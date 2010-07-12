@@ -69,18 +69,22 @@ ProtoJS.Test.RunDriver = Class.extend( {
 	},
 
 	start : function start() {
+		this.prepare();
+		
+		this.testNextUnit();
+
+		// wait for all timers to execute before stopping
+		if( Envjs.wait ) { Envjs.wait(); }
+	},
+	
+	prepare: function prepare() {
 		this.successful       = 0;
 		this.failed           = 0;
 
 		this.waitingFor       = 0;
 
 		this.currentUnitIndex = -1;
-		this.currentUnit      = null;
-		
-		this.testNextUnit();
-
-		// wait for all timers to execute before stopping
-		if( Envjs.wait ) { Envjs.wait(); }
+		this.currentUnit      = null;		
 	},
 	
 	testNextUnit: function testNextUnit() {
@@ -156,6 +160,7 @@ ProtoJS.Test.RunDriver = Class.extend( {
 			print( "Please provide a function to test first..." );
 			return;
 		}
+		this.prepare();
 		set.iterate(function(test) {
 			var outcome = this.testFunction( test.data, test.msg, test.result );
 			outcome.result == test.expected ? 
