@@ -1,5 +1,5 @@
-load( "lib/common.make/env.rhino.js" );
-load( "build/ProtoJS.cli.js" );
+load( "lib/env.rhino.js" );
+load( "build/ProtoJS.min.js" );
 
 [ 
   "Class", "Array", "Hash", "Function", "Object", "String", 
