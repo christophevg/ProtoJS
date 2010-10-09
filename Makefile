@@ -55,7 +55,7 @@ ${BUILD_DIR}/${APP}.js: ${BUILD_DIR} ${SHARED_SRCS}
 	@echo "*** building $@"
 	@${COMPRESS} $< > $@
 
-test: ${BUILD_DIR}/${APP}.min.js
+test: clean ${BUILD_DIR}/${APP}.min.js
 	@echo "*** running tests"
 	@${JSEXEC} -opt -1 -f t/runAllTests.js
 

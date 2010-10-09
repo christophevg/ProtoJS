@@ -3,7 +3,13 @@ ProtoJS.Number = {
     isHash    : function() { return false; },
     isFunction: function() { return false; },
     isString  : function() { return false; },
-    isNumber  : function() { return true;  }
+    isNumber  : function() { return true;  },
+
+    toHex     : function() {
+      number = this.valueOf() < 0 ? 
+        0xFFFFFFFF + this.valueOf() + 1 : this.valueOf();
+      return number.toString(16).toUpperCase();
+    }
 };
 
 ProtoJS.mix( ProtoJS.Number, Number.prototype );

@@ -2,7 +2,7 @@ load( "lib/env.rhino.js" );
 load( "build/ProtoJS.min.js" );
 
 [ 
-  "Class", "Array", "Hash", "Function", "Object", "String", 
+  "Class", "Array", "Hash", "Function", "Object", "String", "Number",
   "Ajax", "Timer", "Font", "Event", "Test" 
 ].iterate( function( unit ) {
 	load( "t/test" + unit + ".js"    );	
