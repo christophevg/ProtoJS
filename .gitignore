@@ -1,5 +1,5 @@
 #project specific
-.check-deps
+.depcheck
 build
 dist
 #Mac OS X
