@@ -18,7 +18,7 @@ ProtoJS.Test.Runner.addTestUnit(
 			this.assertEqual( runner.getResults().successful, 4 );
 		},
 
-		test001TestNegtaiveAssertions: function() {
+		test002TestNegtaiveAssertions: function() {
 			var test = ProtoJS.Test.extend( { 
 				getScope: function() { return "test"; },
 				test001AssertTrue :    function() { this.assertTrue    (false   ); },
@@ -31,7 +31,31 @@ ProtoJS.Test.Runner.addTestUnit(
 			this.assertEqual( runner.getResults().total,      4 );
 			this.assertEqual( runner.getResults().failed,     4 );
 			this.assertEqual( runner.getResults().successful, 0 );
-		}
+		},
+
+		test003TestUsingSuccess: function() {
+			var runner = new ProtoJS.Test.RunDriver();
+			runner.withoutDetails()
+			  .test( function(data, msg, result) {
+			    return { result: data == result, info: "" };
+		    } )
+		    .using( [ { name : "001", data : "ok", result: "ok" } ] );
+			this.assertEqual( runner.getResults().total,      1 );
+			this.assertEqual( runner.getResults().failed,     0 );
+			this.assertEqual( runner.getResults().successful, 1 );
+	  },
+
+		test004TestUsingFail: function() {
+			var runner = new ProtoJS.Test.RunDriver();
+			runner.withoutDetails()
+			  .test( function(data, msg, result) {
+			    return { result: data == result, info: "" };
+		    } )
+		    .using( [ { name : "001", data : "ok", result: "NOT ok" } ] );
+			this.assertEqual( runner.getResults().total,      1 );
+			this.assertEqual( runner.getResults().failed,     1 );
+			this.assertEqual( runner.getResults().successful, 0 );
+	  }
 
 	} )
 );

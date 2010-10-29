@@ -163,7 +163,9 @@ ProtoJS.Test.RunDriver = Class.extend( {
 		this.prepare();
 		set.iterate(function(test) {
 			var outcome = this.testFunction( test.data, test.msg, test.result );
-			outcome.result == test.expected ? 
+      var expected = typeof test.expected == "boolean" ?
+        test.expected : true;
+			outcome.result === expected ?
 				this.success(test.name) : this.fail(test.name, outcome.info);
 		}.scope(this) );
 	}
