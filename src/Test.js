@@ -152,6 +152,7 @@ ProtoJS.Test.RunDriver = Class.extend( {
 
 	test : function test( fnc ) {
 		this.testFunction = fnc;
+		this.prepare();
 		return this;
 	},
 
@@ -160,7 +161,6 @@ ProtoJS.Test.RunDriver = Class.extend( {
 			print( "Please provide a function to test first..." );
 			return;
 		}
-		this.prepare();
 		set.iterate(function(test) {
 			var outcome = this.testFunction( test.data, test.msg, test.result );
       var expected = typeof test.expected == "boolean" ?
@@ -168,6 +168,7 @@ ProtoJS.Test.RunDriver = Class.extend( {
 			outcome.result === expected ?
 				this.success(test.name) : this.fail(test.name, outcome.info);
 		}.scope(this) );
+		return this;
 	}
 } );
 
