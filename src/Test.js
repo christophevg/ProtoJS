@@ -52,15 +52,33 @@ ProtoJS.Test.RunDriver = Class.extend( {
 	init : function init() {
 		this.units = [];
 		this.logDetails = true;
+		this.print = print;
+    this.bufferedOutput = [];
 	},
 
 	withoutDetails: function withoutDetails() {
 		this.logDetails = false;
 		return this;
 	},
+	
+	outputUsing : function outputUsing( handler ) {
+	  this.print = handler;
+	  return this;
+  },
+  
+  bufferOutput : function bufferOutput() {
+    this.print = function(msg) {
+      this.bufferedOutput.push( msg );
+    }.scope(this);
+    return this;
+  },
+  
+  getBufferedOutput : function getBufferedOutput() {
+    return this.bufferedOutput.join( "\n" );
+  },
 
 	log: function log(msg) {
-		if( this.logDetails ) { print( msg ); }
+		if( this.logDetails ) { this.print( msg ); }
 	},
 
 	addTestUnit: function addTestUnit( unit ) {
@@ -74,7 +92,7 @@ ProtoJS.Test.RunDriver = Class.extend( {
 		this.testNextUnit();
 
 		// wait for all timers to execute before stopping
-		if( Envjs.wait ) { Envjs.wait(); }
+		if( typeof Envjs != "undefined" && Envjs.wait ) { Envjs.wait(); }
 	},
 	
 	prepare: function prepare() {
@@ -158,7 +176,7 @@ ProtoJS.Test.RunDriver = Class.extend( {
 
 	using : function using( set ) {
 		if( !this.testFunction ) {
-			print( "Please provide a function to test first..." );
+			this.print( "Please provide a function to test first..." );
 			return;
 		}
 		set.iterate(function(test) {

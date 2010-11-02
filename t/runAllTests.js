@@ -3,7 +3,7 @@ load( "build/ProtoJS.cli.min.js" );
 
 [ 
   "Class", "Array", "Hash", "Function", "Object", "String", "Number",
-  "Ajax", "Timer", "Font", "Event", "Test" 
+  "Ajax", "Timer", "Font", "Event", "Test", "Binding"
 ].iterate( function( unit ) {
 	load( "t/test" + unit + ".js"    );	
 } );

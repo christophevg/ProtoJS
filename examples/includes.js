@@ -8,7 +8,9 @@ var scripts = [
   "src/Array.js", 
   "src/Hash.js",    
   "src/Function.js",
-  "src/Event.js"
+  "src/Event.js",
+  "src/Test.js",
+  "src/Binding.js"
 ];
 
 function addScript(url) {

@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="css/text" href="examples.css" />
+
+    <script type="text/javascript" src="includes.js"></script>
+  </head>
+  <body>
+    <h1>Binding</h1>
+    <div class="box">
+      <h2>Step by step ...</h2>
+      input 1 : <input id="input1"> (step 3: change this)<br>
+      input 2 : <input id="input2"><br>
+
+      <script>
+      var binder = new ProtoJS.Binding.Binder();
+      var myValue = new ProtoJS.Binding.Bindable();
+      binder.add(myValue);
+      binder.add("input1");
+      binder.add(document.getElementById("input2"));
+      myValue.on( "change", function(value) { 
+        document.getElementById("myValue").value = value.get();
+      } );
+      </script>
+
+      <pre>var myValue = new ProtoJS.Binding.Bindable(); // = <input id="myValue">
+var binder = new ProtoJS.Binding.Binder();
+binder.add(myValue);
+binder.add("input1");
+binder.add(document.getElementById("input2"));
+<a href="javascript:myValue.set(123);">myValue.set(123)</a>; // step 1 execute this
+<a href="javascript:myValue.set('abc');">myValue.set("abc")</a>; // step 2 execute this</pre> 
+    </div>
+  </body>
+</html>

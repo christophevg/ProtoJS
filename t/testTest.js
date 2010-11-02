@@ -67,6 +67,29 @@ ProtoJS.Test.Runner.addTestUnit(
 			this.assertEqual( runner.getResults().successful, 1 );
 	  },
 
+		test003UseCustomOutput: function() {
+			var test = ProtoJS.Test.extend( { 
+				getScope: function() { return "test"; },
+				test001AssertTrue :    function() { this.assertTrue    (false   ); },
+			} );
+			var runner = new ProtoJS.Test.RunDriver();
+			this.log = "";
+			runner.addTestUnit(test).outputUsing( function(msg) {
+			  this.log += msg;
+			}.scope(this) ).start();
+			this.assertEqual( this.log, "Testing test- test001AssertTrueFAIL: undefined\n  Expected:\ntrue\n  Got:\nfalse\n  \n" );
+	  },
+	  
+	  test004BufferedOutput: function() {
+			var test = ProtoJS.Test.extend( { 
+				getScope: function() { return "test"; },
+				test001AssertTrue :    function() { this.assertTrue    (false   ); },
+			} );
+			var runner = new ProtoJS.Test.RunDriver();
+			runner.addTestUnit(test).bufferOutput().start();
+			this.assertEqual( runner.getBufferedOutput(), "Testing test\n- test001AssertTrue\nFAIL: undefined\n  Expected:\ntrue\n  Got:\nfalse\n  \n" );
+    },
+
 	  createTestRunnerWithoutDetails : function() {
 	    return new ProtoJS.Test.RunDriver().withoutDetails();
     }

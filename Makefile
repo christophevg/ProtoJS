@@ -15,7 +15,8 @@ SRCS = src/IEFixes.js \
        src/Ajax.js \
        src/Timer.js \
        src/Font.js \
-       src/Test.js
+       src/Test.js \
+       src/Binding.js
 
 CLI_SRCS = ${SRCS}
 
