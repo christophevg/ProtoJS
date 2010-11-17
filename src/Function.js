@@ -17,7 +17,8 @@ ProtoJS.Function = {
   isHash    : function() { return false; },
   isFunction: function() { return true;  },
   isString  : function() { return false; },
-  isNumber  : function() { return false; }
+  isNumber  : function() { return false; },
+  isClass   : function() { return false; }
 };
 
 ProtoJS.mix( ProtoJS.Function, Function.prototype );

@@ -12,21 +12,27 @@ ProtoJS.Test = Class.extend( {
 	},
 	
 	assertEqual: function assertEqual( val1, val2, info ) {
-		val1 == val2 ? 
-			this.tester.success( this.currentTestName ) : 
+    if( val1 == val2 ) {
+			this.tester.success( this.currentTestName );
+		} else {
+      info = info || "";
 			this.tester.fail( this.currentTestName, 
-					 							"  Expected:\n" + val2 + "\n" +
-					 							"  Got:\n" + val1 + "\n" +
-					 							"  " + ( info || "" ) + "\n" );
+                        "  Expected:\n" + val2 + "\n" +
+                        "  Got:\n" + val1 + "\n" +
+                        "  " + info + "\n" );
+    }
 	},
 	
 	assertNotEqual: function assertEqual( val1, val2, info ) {
-		val1 != val2 ? 
-			this.tester.success( this.currentTestName ) : 
+		if( val1 != val2 ) {
+			this.tester.success( this.currentTestName );
+		} else {
+      info = info || "";
 			this.tester.fail( this.currentTestName, 
-					 							"  Expected:\n" + val2 + "\n" +
-					 							"  Got:\n" + val1 + "\n" +
-					 							"  " + ( info || "" ) + "\n" );
+                        "  Expected:\n" + val2 + "\n" +
+                        "  Got:\n" + val1 + "\n" +
+                        "  " + info + "\n" );
+    }
 	},
 	
 	assertTrue: function assertEqual( val, info ) {
@@ -118,7 +124,7 @@ ProtoJS.Test.RunDriver = Class.extend( {
 				var name = this.currentTests[this.currentTestIndex];
 				if( name && name.match(/^test/) ) {
 					this.log( "- " + name );
-					this.currentTestName = name;
+					this.currentUnit.currentTestName = name;
 					if( this.currentUnit.before ) { this.currentUnit.before(); }
 					this.currentUnit[name].scope(this.currentUnit)();
 					if( this.currentUnit.after ) { this.currentUnit.after(); }
@@ -165,8 +171,11 @@ ProtoJS.Test.RunDriver = Class.extend( {
 			var outcome = this.testFunction( test.data, test.msg, test.result );
       var expected = typeof test.expected == "boolean" ?
         test.expected : true;
-			outcome.result === expected ?
-				this.success(test.name) : this.fail(test.name, outcome.info);
+			if( outcome.result === expected ) {
+				this.success(test.name);
+			} else {
+			  this.fail(test.name, outcome.info);
+		  }
 		}.scope(this) );
 		return this;
 	}

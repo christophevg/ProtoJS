@@ -3,6 +3,16 @@ ProtoJS.Test.Runner.addTestUnit(
 	ProtoJS.Test.extend( {
 		getScope: function() { return "Hash"; },
 		
+		test000Is: function() {
+		  var hash = $H({1:1,2:2,3:3});
+		  this.assertFalse( hash.isString()   );
+		  this.assertFalse( hash.isNumber()   );
+		  this.assertFalse( hash.isArray()    );
+		  this.assertTrue ( hash.isHash()     );
+		  this.assertFalse( hash.isFunction() );
+		  this.assertFalse( hash.isClass()    );
+	  },
+
 		test001GetSet: function() {
 			var aHash = this.createMixedValueHash();
     	this.assertEqual( aHash.get( "d" ), "apple" );

@@ -3,6 +3,15 @@ ProtoJS.Test.Runner.addTestUnit(
 	ProtoJS.Test.extend( {
 		getScope: function() { return "Array"; },
 		
+		test000Is: function() {
+		  this.assertFalse( [1,2,3].isString()   );
+		  this.assertFalse( [1,2,3].isNumber()   );
+		  this.assertTrue ( [1,2,3].isArray()    );
+		  this.assertFalse( [1,2,3].isHash()     );
+		  this.assertFalse( [1,2,3].isFunction() );
+		  this.assertFalse( [1,2,3].isClass()    );
+	  },
+
 		test001Has: function() {
 			var anArray = this.createMixedValueArray();
     	this.assertTrue( anArray.has( "apple" ) );

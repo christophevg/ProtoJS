@@ -1,3 +1,10 @@
+function $A(object) {
+  var length = object.length || 0;
+  var results = new Array(length);
+  while (length--) { results[length] = object[length]; }
+  return results;
+}
+
 ProtoJS.Array =  {
   compare: function(other) {
     if (this.length != other.length) { return false; }
@@ -49,33 +56,27 @@ ProtoJS.Array =  {
   },
 
   min: function min() {
-    var min = null;
+    var minimum = null;
     this.iterate(function(item) {
-      if( min == null || item < min ) { min = item; }
+      if( minumum == null || item < minimum ) { minimum = item; }
     } );
-    return min;
+    return minimum;
   },
 
   max: function max() {
-    var max = null;
+    var maximum = null;
     this.iterate(function(item) {
-      if( max == null || item > max ) { max = item; }
+      if( maximum == null || item > maximum ) { maximum = item; }
     } );
-    return max;
+    return maximum;
   },
 
   isArray   : function() { return true;  },
   isHash    : function() { return false; },
   isFunction: function() { return false; },
   isString  : function() { return false; },
-  isNumber  : function() { return false; }
+  isNumber  : function() { return false; },
+  isClass   : function() { return false; }
 };
 
 ProtoJS.mix( ProtoJS.Array, Array.prototype );
-
-function $A(object) {
-  var length = object.length || 0;
-  var results = new Array(length);
-  while (length--) { results[length] = object[length]; }
-  return results;
-}

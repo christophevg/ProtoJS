@@ -3,6 +3,16 @@ ProtoJS.Test.Runner.addTestUnit(
 	ProtoJS.Test.extend( {
 		getScope: function() { return "Class"; },
 
+		test000Is: function() {
+		  var class1 = Class.extend({});
+		  this.assertFalse( class1.isString()   );
+		  this.assertFalse( class1.isNumber()   );
+		  this.assertFalse( class1.isArray()    );
+		  this.assertFalse( class1.isHash()     );
+		  this.assertFalse( class1.isFunction() );
+		  this.assertTrue ( class1.isClass()    );
+	  },
+
 		test001MethodInvocation: function() {
 			var class1 = this.createClassLoggingItsMethodCalls( "class1" );
 			var obj1   = new class1();

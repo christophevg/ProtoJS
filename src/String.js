@@ -20,7 +20,8 @@ ProtoJS.String = {
   isHash    : function isHash()     { return false; },
   isFunction: function isFunction() { return false; },
   isString  : function isString()   { return true;  },
-  isNumber  : function isNumber()   { return false; }
+  isNumber  : function isNumber()   { return false; },
+  isClass   : function isClass()    { return false; }
 };
 
 ProtoJS.mix( ProtoJS.String, String.prototype );

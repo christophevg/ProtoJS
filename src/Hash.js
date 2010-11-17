@@ -45,7 +45,8 @@ var Hash = Class.extend( {
   isHash    : function() { return true;  },
   isFunction: function() { return false; },
   isString  : function() { return false; },
-  isNumber  : function() { return false; }
+  isNumber  : function() { return false; },
+  isClass   : function() { return false; }
 } );
 
 var $H = function(hash) { return new Hash(hash); };

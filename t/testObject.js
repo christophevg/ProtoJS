@@ -4,19 +4,16 @@ ProtoJS.Test.Runner.addTestUnit(
 		getScope: function() { return "Object"; },
 
 		test001TypeChecks: function() {
-			// TODO: test ALL combo's ;-)
-			this.assertTrue( "123".isString() );
-			this.assertTrue( Object.isString( "123" ) );
+			this.assertTrue( Object.isUndefined( blah ) );
+			var blah = 1;
+			this.assertFalse( Object.isUndefined( blah ) );
+		},
 
-			this.assertTrue( [ 1, 2, 3 ].isArray() );
-			this.assertFalse( "123".isArray() );
-
-			this.assertFalse( (123).isString() );
-			this.assertTrue( (123).isNumber() );
-
-			this.assertTrue( Object.isArray( [ 1, 2 ] ) );
-			this.assertFalse( Object.isArray( { 1:1, 2:2 } ) );
-		}
+		test002ClassBasedObjects: function() {
+		  var clazz = Class.extend( {} );
+		  var obj   = new clazz();
+		  this.assertEqual( typeof obj.isArray, "function" );
+	  }
 	} )
 
 );
