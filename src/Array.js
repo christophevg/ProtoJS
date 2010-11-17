@@ -58,7 +58,7 @@ ProtoJS.Array =  {
   min: function min() {
     var minimum = null;
     this.iterate(function(item) {
-      if( minumum == null || item < minimum ) { minimum = item; }
+      if( minimum == null || item < minimum ) { minimum = item; }
     } );
     return minimum;
   },
