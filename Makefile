@@ -19,6 +19,8 @@ SRCS = src/IEFixes.js \
 
 CLI_SRCS = ${SRCS}
 
+MORE_DIST-SRC_SRCS = include.js
+
 #############################################################################
 # boilerplate to kickstart common.make
 
