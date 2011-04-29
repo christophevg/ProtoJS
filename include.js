@@ -27,6 +27,7 @@
 // The following list are the separate Javascript files, in order, to be
 // loaded. They are relative to this include file.
 [
+	"src/IEFixes.js",
   "src/ProtoJS.js", 
   "src/Mixin.js", 
   "src/Object.js", 
@@ -36,7 +37,11 @@
   "src/Array.js", 
   "src/Hash.js",    
   "src/Function.js",
-  "src/Event.js"
+  "src/Event.js",
+	"src/Font.js",
+	"src/Timer.js",
+	"src/Ajax.js",
+	"src/Test.js"
 ]
 
 );
